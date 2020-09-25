@@ -28,9 +28,16 @@ a {
     font-size: 20px;
 }
 
+thead#custom-thead {
+    color: black;
+    background-color:  #6FBFBF;
+}
+
+
 #footer {
     position: fixed;
     bottom: 0;
     padding-bottom: 80px;
-    z-index: 1;
+    z-index: 1055;
+    max-height: 8%;
 }

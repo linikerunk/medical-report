@@ -1,5 +1,51 @@
 {% load static %}
 
-<script src="{% static 'jquery\popper.min.js' %}"></script>
-<script src="{% static 'bootstrap\bootstrap.bundle.min.js' %}"></script>
-<script src="{% static 'jquery\jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'jquery/jquery-3.4.1.slim.min.js' %}"></script>
+<script src="{% static 'jquery/popper.min.js' %}"></script>
+<script src="{% static 'jquery/jquery.min.js' %}"></script>
+<script src="{% static 'jquery/jquery.mask.js' %}"></script>
+<script src="{% static 'bootstrap/bootstrap.min.js' %}"></script>
+<script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
+
+
+<script>
+$(document).ready(function($){
+    console.log("testando:", typeof($))
+    $("#query_date").mask("00/00/0000");
+});
+</script>
+
+<script>
+    jQuery('#doctor').click(function () {
+        alert("This is awesome!")
+    })
+    
+    $("#doctor").change(function () {
+    let doctor_name = $(this).val();
+    let url = "/doctor_name/" + doctor_name + "/";
+    jQuery.ajax({
+        url: url,
+        type: 'GET',
+        data: {
+            doctor_name : doctor_name, 
+        },
+
+        beforeSend: function (xhr) {
+        // body...
+        },
+
+        success: function (response) {
+            var response = JSON.parse(response)
+            console.log("Query : ", response)
+        },
+
+        error: function (xhr) {
+        },
+
+        complete: function () {
+        }
+        })
+    });
+</script>
+
+
