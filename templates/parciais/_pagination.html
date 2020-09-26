@@ -8,7 +8,7 @@
                 <a class="page-link" href="?page=1">Início</a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if request.GET.termo %}&termo={{ request.GET.termo }}{% endif %}">Anterior</a>
             </li>
             {% endif %}
     
@@ -16,11 +16,11 @@
     
             {% if page_obj.number == page %}
             <li class="page-item active">
-                <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+                <a class="page-link" href="?page={{ page }}{% if request.GET.termo %}&termo={{ request.GET.termo }}{% endif %}">{{ page }}</a>
             </li>
             {% elif page > page_obj.number|add:'-3' and page < page_obj.number|add:'3' %}
             <li class="page-item">
-                <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+                <a class="page-link" href="?page={{ page }}{% if request.GET.termo %}&termo={{ request.GET.termo }}{% endif %}">{{ page }}</a>
             </li>
             {% endif %}
     
@@ -28,7 +28,7 @@
     
             {% if page_obj.has_next %}
             <li class="page-item">
-                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Próximo</a>
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if request.GET.termo %}&termo={{ request.GET.termo }}{% endif %}">Próximo</a>
             </li>
             <li class="page-item">
                 <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Último</a>

@@ -11,21 +11,23 @@
     </div> <!-- ./col-md-12 -->
 
     <div class="col-md-5 mb-2">
-    <select class="form-control" name="treinamento" id=treinamento>
-    <option id="doctor" value="" disabled selected>Filtrar pelo nome do médico.</option>
+    <select id="doctor" class="form-control" name="doctor_name">
+    <option  disabled selected>Filtrar pelo nome do médico.</option>
     {% for obj in medical_exam %}
-    <option id="doctor" name="doctor_name" value="{{ obj }}" >{{ obj.doctor_name }} </option>
+    <option  name="doctor_name" value="{{ obj }}" >{{ obj.doctor_name }} </option>
     {% endfor %}
     </select>
     </div> <!-- ./col-md-5 -->
     
     <div class="col-md-5 mb-2">
-    <input type="text" name="query_date" id="query_date"
+    <form id="search_form" method="GET" action="{% url 'core:search' %}">
+    <input type="text" name="term" id="query_date" value="{{ request.GET.term }}"
     class="form-control" placeholder="Digite a data do Exame. (Ex: 10/10/2020)">
     </div> <!-- ./col-md-5 -->
 
     <div class="col-md-2">
-        <button type="button" class="btn btn-success w-100">Pesquisar</button>
+        <button type="submit" class="btn btn-success w-100">Pesquisar</button>
+      </form>
     </div>
 
     <div class="col-md-12">
@@ -45,7 +47,7 @@
           <tr>
             <td >{{ object.doctor_name }}</td>
               <td>{{ object.guide_number }}</th>
-              <td>{{ object.query_date|date:"M d, Y" }}</td>
+              <td>{{ object.query_date|date:"d/m/Y" }}</td>
               <td>{{ object.query_value }}</td>
               <td>188,00</td>
               <td>{{ object.exam_guide_number__exam_times }}</td>
