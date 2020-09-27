@@ -14,7 +14,7 @@
     <select id="doctor" class="form-control" name="doctor_name">
     <option  disabled selected>Filtrar pelo nome do médico.</option>
     {% for obj in medical_exam %}
-    <option  name="doctor_name" value="{{ obj }}" >{{ obj.doctor_name }} </option>
+    <option  name="doctor_identifier" value="{{ obj.doctor_identifier }}" >{{ obj.doctor_name }} </option>
     {% endfor %}
     </select>
     </div> <!-- ./col-md-5 -->
@@ -42,21 +42,23 @@
               <th>Qtde Exames</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="custom-tbody">
           {% for object in object_list %}
           <tr>
-            <td >{{ object.doctor_name }}</td>
+            <td>{{ object.guide_number.doctor_name }}</td>
               <td>{{ object.guide_number }}</th>
-              <td>{{ object.query_date|date:"d/m/Y" }}</td>
-              <td>{{ object.query_value }}</td>
-              <td>188,00</td>
-              <td>{{ object.exam_guide_number__exam_times }}</td>
+              <td>{{ object.guide_number.query_date|date:"d/m/Y" }}</td>
+              <td>{{ object.guide_number.query_value }}</td>
+              <td>{{ object.get_total_value_exam }}</td>
+              <td>{{ object.exam_times }}</td>
             {% endfor %}
           </tr>
         </tbody>
       </table>
       <tfoot>
+        <span id="custom-tfoot">
         {% include 'parciais/_pagination.html' %}
+        </span>  
       </tfoot>
     </div> <!-- ./col-md-12 -->
 

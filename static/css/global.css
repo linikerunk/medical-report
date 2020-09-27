@@ -41,3 +41,7 @@ thead#custom-thead {
     z-index: 1055;
     max-height: 8%;
 }
+
+th, td {
+    text-align: center;
+}

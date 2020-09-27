@@ -8,10 +8,11 @@
 $("#query_date").mask("00/00/0000");
 </script>
 
-<script>    
+<script>   
 $("#doctor").change(function () {
 let doctor_name = $(this).val();
 let url = "doctor_name/" + doctor_name + "/";
+
 jQuery.ajax({
     url: url,
     type: 'GET',
@@ -20,11 +21,18 @@ jQuery.ajax({
     },
 
     beforeSend: function (xhr) {
-    // body...
+    $('#custom-tbody').empty()
+    $('#custom-tfoot').remove()
     },
 
     success: function (data) {
-    console.info(data)
+    $.each(JSON.parse(data), function(){
+              $('#custom-tbody').append(
+                "<tr><td>" + this.code_doctor + "</td><td>" + this.fields + 
+                "</td><td>" + this.pk + "</td><td>" + this.fields + 
+                "</td><td>" + this.fields + "</td><td>" + this.fields + "</td></tr>" );
+          });
+    console.log(data)
     },
 
     error: function (xhr) {

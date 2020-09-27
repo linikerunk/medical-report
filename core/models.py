@@ -38,7 +38,6 @@ class Examination(Base):
     guide_number = models.ForeignKey(
         'core.MedicalExam',
         verbose_name="Número da Guia",
-        related_name='exam_guide_number',
         on_delete=models.PROTECT
     )
     exam_name = models.CharField("Nome do Exame", max_length=100)
@@ -52,5 +51,8 @@ class Examination(Base):
         self.exam_name = self.exam_name.upper()
         return super(Examination, self).save(*args, **kwargs)
 
+    def get_total_value_exam(self):
+        return self.guide_number.query_value * self.exam_times
+
     def __str__(self):
-        return f"{self.guide_number}"
+        return self.exam_name
