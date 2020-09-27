@@ -21,10 +21,18 @@ class MedicalExam(Base):
         max_digits=8,
         decimal_places=2,
     )
+    total_value = models.DecimalField(
+        "Total da Consulta",
+        max_digits=8,
+        decimal_places=2,
+        null=True,
+    )
 
     class Meta:
         verbose_name = 'Consulta Médica'
         verbose_name_plural = 'Consultas Médicas'
+        ordering = ['-total_value']
+        
 
     def save(self, *args, **kwargs):
         self.doctor_name = self.doctor_name.upper()
@@ -46,13 +54,18 @@ class Examination(Base):
     class Meta:
         verbose_name = 'Exame'
         verbose_name_plural = 'Exames'
+        ordering = ['-guide_number__total_value']
 
     def save(self, *args, **kwargs):
         self.exam_name = self.exam_name.upper()
+        self.guide_number.total_value = self.guide_number.query_value * int(
+                                                    self.exam_times)
+        self.guide_number.save()
         return super(Examination, self).save(*args, **kwargs)
 
-    def get_total_value_exam(self):
-        return self.guide_number.query_value * self.exam_times
+    # @property
+    # def get_total_value_exam(self):
+    #     return self.guide_number.query_value * int(self.exam_times)
 
     def __str__(self):
         return self.exam_name

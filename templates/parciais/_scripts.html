@@ -26,13 +26,14 @@ jQuery.ajax({
     },
 
     success: function (data) {
-    $.each(JSON.parse(data), function(){
+    var data = JSON.parse(data)
+    console.log(data['code_doctor'])
+    $.each(data, function(){
               $('#custom-tbody').append(
-                "<tr><td>" + this.code_doctor + "</td><td>" + this.fields + 
-                "</td><td>" + this.pk + "</td><td>" + this.fields + 
-                "</td><td>" + this.fields + "</td><td>" + this.fields + "</td></tr>" );
+                "<tr><td>" + this+ "</td><td>" + this.fields + 
+                "</td><td>" + this + "</td><td>" + this + 
+                "</td><td>" + this+ "</td><td>" + this.fields+ "</td></tr>" );
           });
-    console.log(data)
     },
 
     error: function (xhr) {

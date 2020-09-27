@@ -49,7 +49,7 @@
               <td>{{ object.guide_number }}</th>
               <td>{{ object.guide_number.query_date|date:"d/m/Y" }}</td>
               <td>{{ object.guide_number.query_value }}</td>
-              <td>{{ object.get_total_value_exam }}</td>
+              <td>{{ object.guide_number.total_value }}</td>
               <td>{{ object.exam_times }}</td>
             {% endfor %}
           </tr>

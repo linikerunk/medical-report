@@ -6,7 +6,7 @@ from .models import MedicalExam, Examination
 @admin.register(MedicalExam)
 class MedicalExamAdmin(ImportExportModelAdmin):
     list_display = ['guide_number', 'doctor_identifier', 'doctor_name',
-    'query_date', 'query_value' ]
+    'query_date', 'query_value', 'total_value' ]
     list_filter = ['doctor_name', 'query_date']
 
 
