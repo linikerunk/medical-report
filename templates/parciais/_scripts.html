@@ -25,16 +25,14 @@ jQuery.ajax({
     $('#custom-tfoot').remove()
     },
 
-    success: function (data) {
+    success: function (data) { 
     var data = JSON.parse(data)
-    console.log(data['code_doctor'])
-    $.each(data, function(){
-              $('#custom-tbody').append(
-                "<tr><td>" + this+ "</td><td>" + this.fields + 
-                "</td><td>" + this + "</td><td>" + this + 
-                "</td><td>" + this+ "</td><td>" + this.fields+ "</td></tr>" );
-          });
-    },
+    console.log(data)
+    $('#custom-tbody').append(
+                "<tr><td id='doctor_name'>" + data + "</td><td id='guide_number'>" + data + 
+                "</td><td id='query_date'>" + data + "</td><td id='query_value'>" + data + 
+                "</td><td id='total_value'>" + data+ "</td><td id='exam_times'>" + data+ "</td></tr>")
+    }, 
 
     error: function (xhr) {
     },
@@ -45,6 +43,5 @@ jQuery.ajax({
 })
 });
 </script>
-
 
 

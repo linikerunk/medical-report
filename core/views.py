@@ -43,11 +43,8 @@ class SearchView(IndexView):
             
 
 def doctor_name_ajax(request, id):
-    code_doctor = Examination.objects.filter(guide_number__doctor_identifier=id)
+    examination = Examination.objects.filter(guide_number__doctor_identifier=id)
     medical_exam = MedicalExam.objects.filter(doctor_identifier=id)
-    code_doctor = serializers.serialize('json', code_doctor)
     medical_exam = serializers.serialize('json', medical_exam)
-    data = simplejson.dumps({'code_doctor': code_doctor,
-                             'medical_exam': medical_exam})
-    print(data)
-    return JsonResponse(data, safe=False)
+    examination = serializers.serialize('json', examination)
+    return JsonResponse(examination, safe=False)

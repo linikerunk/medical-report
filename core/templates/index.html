@@ -44,15 +44,17 @@
         </thead>
         <tbody id="custom-tbody">
           {% for object in object_list %}
-          <tr>
-            <td>{{ object.guide_number.doctor_name }}</td>
-              <td>{{ object.guide_number }}</th>
-              <td>{{ object.guide_number.query_date|date:"d/m/Y" }}</td>
-              <td>{{ object.guide_number.query_value }}</td>
-              <td>{{ object.guide_number.total_value }}</td>
-              <td>{{ object.exam_times }}</td>
+          <tr id="custom-tr">
+            <td id="doctor_name">{{ object.guide_number.doctor_name }}</td>
+              <td id="guide_number">{{ object.guide_number }}</th>
+              <td id="query_date">{{ object.guide_number.query_date|date:"d/m/Y" }}</td>
+              <td id="query_value">{{ object.guide_number.query_value }}</td>
+              <td id="total_value">{{ object.guide_number.total_value }}</td>
+              <td id="exam_times">{{ object.exam_times }}</td>
             {% endfor %}
           </tr>
+
+
         </tbody>
       </table>
       <tfoot>
