@@ -5,7 +5,7 @@ from core.models import MedicalExam, Examination
 
 
 def insert_query_models(apps, schema_editor):
-    with open("data_migrations/consulta.csv", "r+") as csv_file:
+    with open("data_migration/consulta.csv", "r+") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=';')
         next(csv_reader)
         for row  in csv_reader:
@@ -22,7 +22,7 @@ def insert_query_models(apps, schema_editor):
                 print("Objeto não existe.")
 
 def insert_exam_models(apps, schema_editor):
-    with open("data_migrations/exames.csv", "r+") as csv_file:
+    with open("data_migration/exames.csv", "r+") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=';')
         next(csv_reader)
         for row  in csv_reader:
