@@ -1,6 +1,8 @@
 # Challenged Mapes Solutions
 ![MAPES](https://user-images.githubusercontent.com/27506588/94381799-e64f6700-0110-11eb-9dc1-ef803d3e146e.png)
 
+Link to access the app : https://relatorio-medico.herokuapp.com/
+Link to access the app as admin : https://relatorio-medico.herokuapp.com/admin 
 
 This is a challenge for the MAPESolutions where needs to do a sequence of steps, the step that need to implementation is below.
 
