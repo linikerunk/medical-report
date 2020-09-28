@@ -25,7 +25,9 @@ class IndexView(ListView):
 class SearchView(IndexView):
 
     def get_queryset(self, *args, **kwargs):
-        term = self.request.GET.get('term')
+        term = self.request.GET.get('term') 
+        doctor_name = self.request.GET.get('doctor_identifier') 
+
         try:
             term = term.replace('/', '-')
             term_formated = datetime.strptime(term, '%d-%m-%Y').strftime(
@@ -34,25 +36,16 @@ class SearchView(IndexView):
 
             if not term_formated:
                 return qs
-            qs = Examination.objects.filter(
-                            guide_number__query_date=term_formated).order_by(
-                                                '-guide_number__total_value')
+
+            if term_formated:
+                qs = qs.filter(
+                    guide_number__query_date=term_formated).order_by(
+                            '-guide_number__total_value')
+            
+            if doctor_name:
+                qs = qs.filter()
+                
         except Exception as e:
-            print(f'Campo de pesquisa de data está vazio, erro : {e}')
+            print(f'Campo de pesquisa está vazio, erro : {e}')
             qs = super().get_queryset(*args, **kwargs)
         return qs
-
-
-
-
-
-# View used by trying to do a request ajax but unfortunately
-#  the query doens't work
-
-# def doctor_name_ajax(request, id):
-#     examination = Examination.objects.filter(
-#                                   guide_number__doctor_identifier=id)
-#     medical_exam = MedicalExam.objects.filter(doctor_identifier=id)
-#     medical_exam = serializers.serialize('json', medical_exam)
-#     examination = serializers.serialize('json', examination)
-#     return JsonResponse(examination, safe=False)

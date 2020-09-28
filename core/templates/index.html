@@ -11,16 +11,16 @@
     </div> <!-- ./col-md-12 -->
 
     <div class="col-md-5 mb-2">
+    <form id="search_form" method="GET" action="{% url 'core:search' %}">
     <select id="doctor" class="form-control" name="doctor_name">
     <option  disabled selected>Filtrar pelo nome do médico.</option>
     {% for obj in medical_exam %}
-    <option  name="doctor_identifier" value="{{ obj.doctor_identifier }}" >{{ obj.doctor_name }} </option>
+    <option  name="doctor_identifier" id="doctor" value="{{ obj.doctor_identifier }}" >{{ obj.doctor_name }} </option>
     {% endfor %}
     </select>
     </div> <!-- ./col-md-5 -->
     
     <div class="col-md-5 mb-2">
-    <form id="search_form" method="GET" action="{% url 'core:search' %}">
     <input type="text" name="term" id="query_date" value="{{ request.GET.term }}"
     class="form-control" placeholder="Digite a data do Exame. (Ex: 10/10/2020)">
     </div> <!-- ./col-md-5 -->
