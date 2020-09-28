@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: 0;
+}
+
+body {
+    background:  #FFF;
+    -webkit-font-smoothing: antialiased;
+}
+
+body, input, button {
+    font-family: 'Roboto Slab', serif;
+    font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6, strong {
+    font-weight: 500;
+  }
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: black;
+    font-size: 20px;
+}
+
+thead#custom-thead {
+    color: black;
+    background-color:  #6FBFBF;
+}
+
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    padding-bottom: 80px;
+    z-index: 1055;
+    max-height: 8%;
+}
+
+th, td {
+    text-align: center;
+}
