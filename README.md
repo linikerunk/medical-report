@@ -1,6 +1,9 @@
 # Challenged Mapes Solutions
+![MAPES](https://user-images.githubusercontent.com/27506588/94381799-e64f6700-0110-11eb-9dc1-ef803d3e146e.png)
+
 
 This is a challenge for the MAPESolutions where needs to do a sequence of steps, the step that need to implementation is below.
+
 The test consists of implementing a scenario, to demonstrate knowledge in the following
 technologies: django, jquery, bootstrap, postgresql and unit tests.
  - Django
