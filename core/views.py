@@ -23,29 +23,40 @@ class IndexView(ListView):
 
 
 class SearchView(IndexView):
+    '''
+    https://docs.djangoproject.com/en/3.0/topics/db/queries/#complex-lookups-with-q-objects
+    '''
 
     def get_queryset(self, *args, **kwargs):
-        term = self.request.GET.get('term') 
-        doctor_name = self.request.GET.get('doctor_identifier') 
+
+        term = self.request.GET.get('term', None)
+        doctor_identifier = self.request.GET.get('doctor_identifier', None)
 
         try:
-            term = term.replace('/', '-')
-            term_formated = datetime.strptime(term, '%d-%m-%Y').strftime(
-                                                    '%Y-%m-%d')
+            
             qs = super().get_queryset(*args, **kwargs)
 
-            if not term_formated:
-                return qs
+            filtros = None
 
-            if term_formated:
-                qs = qs.filter(
-                    guide_number__query_date=term_formated).order_by(
-                            '-guide_number__total_value')
-            
-            if doctor_name:
-                qs = qs.filter()
+            if term:
+                term = term.replace('/', '-')
+                term_formated = datetime.strptime(term, '%d-%m-%Y').strftime(
+                                                    '%Y-%m-%d')
+
+                filtros = Q(guide_number__query_date=term_formated)
                 
+                                                    
+            if doctor_identifier:
+                filtros = Q(guide_number__doctor_identifier=doctor_identifier)
+            
+            if term and doctor_identifier:
+                filtros = Q(guide_number__query_date=term_formated) & Q(
+                    guide_number__doctor_identifier=doctor_identifier)
+
+            qs = qs.filter(filtros)
+
         except Exception as e:
             print(f'Campo de pesquisa está vazio, erro : {e}')
             qs = super().get_queryset(*args, **kwargs)
+
         return qs
