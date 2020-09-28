@@ -1,4 +1,4 @@
-import json, simplejson
+import json
 from datetime import datetime
 from django.core.paginator import Paginator
 from django.core import serializers
