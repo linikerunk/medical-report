@@ -17,7 +17,6 @@ technologies: django, jquery, bootstrap, postgresql and unit tests.
 ![Captura de tela de 2020-09-27 23-15-46](https://user-images.githubusercontent.com/27506588/94383969-e2731300-0117-11eb-8f1a-3ad0265de30c.png)
 
 
-
 # How to run this project
 ```sh
 # python version 3.8 

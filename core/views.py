@@ -41,7 +41,6 @@ class SearchView(IndexView):
             print(f'Campo de pesquisa de data está vazio, erro : {e}')
             qs = super().get_queryset(*args, **kwargs)
         return qs
-            
 
 
 
