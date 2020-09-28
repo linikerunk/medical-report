@@ -13,12 +13,31 @@ technologies: django, jquery, bootstrap, postgresql and unit tests.
  - Unit tests
  - Deploy on Heroku
 
+# How to run 
+```sh
+git remote add origin https://github.com/linikerunk/medical-report.git
 
-#
+python -m venv venv_name /
+python3 -m venv venv_name 
 
-  - Import a HTML file and watch it magically convert to Markdown
-  - Drag and drop images (requires your Dropbox account be linked)
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+```
 
+# Test
+ lib - Coverage
+ django - django.test
+
+```sh
+coverage manage.py run
+coverage report
+coverage html
+```
+this is a test doing for the data migrate  for two files [consulta.csv] [exames.csv]
+![first _test](https://user-images.githubusercontent.com/27506588/94382157-13504980-0112-11eb-8a77-9893a87873ed.png) 
 
 You can also:
   - Import and save files from GitHub, Dropbox, Google Drive and One Drive
