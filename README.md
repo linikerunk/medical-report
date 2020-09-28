@@ -20,6 +20,7 @@ technologies: django, jquery, bootstrap, postgresql and unit tests.
 
 # How to run this project
 ```sh
+# python version 3.8 
 git remote add origin https://github.com/linikerunk/medical-report.git
 
 python -m venv venv_name /
